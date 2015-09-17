@@ -1,28 +1,54 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Join the chat at https://gitter.im/elmerwu/pickem](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/elmerwu/pickem?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Things you may want to cover:
+[![Join the chat at https://gitter.im/elmerwu/pickem](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/elmerwu/pickem?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-* Ruby version -> '2.2.1'
+###Getting Started
+Install ruby version 2.2.3
 
-* System dependencies
+``` bash
+rvm install ruby-2.2.3
+```
 
-* Configuration
+Create project gemset
+``` bash
+rvm use 2.2.3@pickem --create
+```
 
-* Database creation
+To list the current project gemset
+``` bash
+rvm gemset list
+```
 
-* Database initialization
+##Installing PostgresSQL
+Using Brew (Mac os)
+``` bash
+brew install postgresql
+```
+Once this command is finished run
+``` bash
+# To have launchd start postgresql at login:
+ln -sfv /usr/local/opt/postgresql/*plist ~/Library/LaunchAgents
 
-* How to run the test suite
+# Then to load postgresql now:
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+```
+By default the postgresql user is your current OS X username with no password.
+``` bash
+psql -d postgres -U {username}
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Note:
+To start postgres manually
+``` bash
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+```
+To stop manually
+``` bash
+pg_ctl -D /usr/local/var/postgres stop -s -m fast
+```
+Check status of postgres
+``` bash
+pg_ctl -D /usr/local/var/postgres status
+```
